@@ -49,7 +49,7 @@ for s in subjs:
     rawScans = os.listdir(rawScanDir)
 
     # look for, and then convert, specific scans
-    scanRuns = ['MPRAGE', 'Run1', 'Run2', 'Run3', 'Run4', 'TDSL1', 'TDSL2']
+    scanRuns = ['MPRAGE', 'TDSL2']
     for run in scanRuns:
 
         # try to find this run for this subj
