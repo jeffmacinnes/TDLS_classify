@@ -34,8 +34,11 @@ def processSubjRawBehave(subj):
     word_onsets = TD_df['ToolDwellingWord.OnsetTime'].dropna()
     pic_onsets = TD_df['ToolDwellingPic.OnsetTime'].dropna()
 
-    # word block always came before pic block. Concatenate onsets accordingly
-    onsets = pd.concat([word_onsets, pic_onsets], ignore_index=True)
+    # figure out which block came first
+    if word_onsets.iloc[0] < pic_onsets.iloc[0]:
+        onsets = pd.concat([word_onsets, pic_onsets], ignore_index=True)
+    else:
+        onsets = pd.concat([pic_onsets, word_onsets], ignore_index=True)
 
     # correct the onset times to sync with the scan vols time.
     # The first trial always occurred 2000ms after the start of the scan
