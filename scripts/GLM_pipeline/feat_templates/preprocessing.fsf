@@ -33,7 +33,7 @@ set fmri(sscleanup_yn) 0
 set fmri(outputdir) "SUB_OUTPUTDIR_SUB"
 
 # TR(s)
-set fmri(tr) 1.000000 
+set fmri(tr) 1.000000
 
 # Total volumes
 set fmri(npts) 500
@@ -109,7 +109,7 @@ set fmri(st_file) ""
 set fmri(bet_yn) 1
 
 # Spatial smoothing FWHM (mm)
-set fmri(smooth) 0
+set fmri(smooth) 4.0
 
 # Intensity normalization
 set fmri(norm_yn) 0
@@ -236,7 +236,7 @@ set fmri(reghighres_yn) 1
 set fmri(reghighres_search) 90
 
 # Degrees of Freedom for registration to main structural
-set fmri(reghighres_dof) BBR
+set fmri(reghighres_dof) 6
 
 # Registration to standard image?
 set fmri(regstandard_yn) 1
@@ -257,7 +257,7 @@ set fmri(regstandard_search) 90
 set fmri(regstandard_dof) 12
 
 # Do nonlinear registration from structural to standard space?
-set fmri(regstandard_nonlinear_yn) 1
+set fmri(regstandard_nonlinear_yn) 0
 
 # Control nonlinear warp field resolution
 set fmri(regstandard_nonlinear_warpres) 10 
