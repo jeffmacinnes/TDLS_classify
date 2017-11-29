@@ -30,7 +30,7 @@ set fmri(featwatcher_yn) 0
 set fmri(sscleanup_yn) 0
 
 # Output directory
-set fmri(outputdir) "/Users/jeffmacinnes/gDrive/jeffCloud/CCDL/TDLS_classify/data/13034/singleTrialGLM/tmp_trial01"
+set fmri(outputdir) "/Users/jeffmacinnes/gDrive/jeffCloud/CCDL/TDLS_classify/data/13040/singleTrialGLM/tmp_trial48"
 
 # TR(s)
 set fmri(tr) 1.000000 
@@ -273,7 +273,7 @@ set fmri(totalVoxels) 54400000
 set fmri(ncopeinputs) 0
 
 # 4D AVW data or FEAT directory (1)
-set feat_files(1) "/Users/jeffmacinnes/gDrive/jeffCloud/CCDL/TDLS_classify/data/13034/preprocessed.feat/filtered_func_data.nii.gz"
+set feat_files(1) "/Users/jeffmacinnes/gDrive/jeffCloud/CCDL/TDLS_classify/data/13040/preprocessed.feat/filtered_func_data.nii.gz"
 
 # Add confound EVs text file
 set fmri(confoundevs) 0
@@ -310,7 +310,7 @@ set fmri(tempfilt_yn1) 0
 set fmri(deriv_yn1) 0
 
 # Custom EV file (EV 1)
-set fmri(custom1) "/Users/jeffmacinnes/gDrive/jeffCloud/CCDL/TDLS_classify/data/13034/timingFiles/trialRegressors/trial_01.txt"
+set fmri(custom1) "/Users/jeffmacinnes/gDrive/jeffCloud/CCDL/TDLS_classify/data/13040/timingFiles/trialRegressors/trial_48.txt"
 
 # Orthogonalise EV 1 wrt EV 0
 set fmri(ortho1.0) 0
@@ -353,7 +353,7 @@ set fmri(tempfilt_yn2) 0
 set fmri(deriv_yn2) 0
 
 # Custom EV file (EV 2)
-set fmri(custom2) "/Users/jeffmacinnes/gDrive/jeffCloud/CCDL/TDLS_classify/data/13034/timingFiles/trialRegressors/allBut_trial01.txt"
+set fmri(custom2) "/Users/jeffmacinnes/gDrive/jeffCloud/CCDL/TDLS_classify/data/13040/timingFiles/trialRegressors/allBut_trial48.txt"
 
 # Orthogonalise EV 2 wrt EV 0
 set fmri(ortho2.0) 0

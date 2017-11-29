@@ -76,15 +76,16 @@ def submit_subj(subj):
     os.makedirs(subjOutputDir)
 
     # loop over all trials
-    for trialNum in range(1, 3):
+    for trialNum in range(1, 49):
         submitModel(subj, trialNum)
 
     # combine all outputs into single image, delete the rest to save space
 
+
+
 # create list of subjects to iterate over
 subjs = ['13034', '13035', '13036',
         '13038', '13039', '13040']
-subjs = ['13034']
 
 for s in subjs:
     submit_subj(s)
