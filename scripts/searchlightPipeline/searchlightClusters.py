@@ -9,11 +9,11 @@ from __future__ import print_function
 
 import os
 from os.path import join
+import subprocess
 
 import numpy as np
 
-clusterThresh = .6  # searchlight accuracy you want to threshold based on
-clusterExtent = 6    # minimum number of voxels that must be in each cluster
+clusterExtent = 4    # minimum number of voxels that must be in each cluster
 slRadius = 5.0
 
 dataDir = '../../data'
@@ -32,10 +32,18 @@ def mkClusters(subj, classProb):
     clusterIdx_img = join(subj_clusterDir, '{}_{}_minExt{}.nii.gz'.format(subj, classProb, clusterExtent))
     cluster_fname = join(subj_clusterDir, '{}_{}_minExt{}.txt'.format(subj, classProb, clusterExtent))
 
+    # figure out the accuracy ranges across the voxels in this searchlight
+    accRange = subprocess.getoutput('fslstats {} -R'.format(sl_img))
+    maxAcc = accRange.split(' ')[1]
+
+    # set threshold based on a proportion of the max accuracy
+    thresh = .6 * float(maxAcc)
+    print(thresh)
+
     # setup command
     cmd_str = ' '.join(['cluster',
                         '-i', sl_img,
-                        '-t', '{:.1f}'.format(clusterThresh),
+                        '-t', '{:.1f}'.format(thresh),
                         '--minextent={}'.format(clusterExtent),
                         '-o', clusterIdx_img,
                         '>', cluster_fname])
@@ -51,7 +59,7 @@ classProbs = ['Modality', 'Category', 'Stimulus',
                 'stimulusPics', 'stimulusWords']
 
 subjs = ['13034']
-classProbs = ['Modality']
+#classProbs = ['Modality']
 
 for s in subjs:
     for c in classProbs:
