@@ -190,7 +190,7 @@ function drawAllPlots(){
 }
 
 // load data
-d3.json('./_js/sl_allResults_kde.json', function(error, data){
+d3.json('_js/sl_allResults_kde.json', function(error, data){
     if (error) throw error;
 
     // load the data into the global var
