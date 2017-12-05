@@ -39,7 +39,11 @@ def getSearchlightResults(classProb, subj, mask):
     # convert to integer percent
     sl_results = [int(x*100) for x in sl_results]
 
+    # get histogram
+    #sl_hist = np.histogram(sl_results, bins=20, range=(0,100))
+
     # Return a list of all voxel percentages
+    #return sl_hist[0].tolist()
     return sl_results
 
 
