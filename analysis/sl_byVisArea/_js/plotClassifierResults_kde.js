@@ -142,7 +142,7 @@ function drawSubjPlot(subj, subjData){
             return chanceX
         })
         .attr('y2', yScale(.07))
-        .style('stroke', 'gray')
+        .style('stroke', 'white')
         .style('stroke-dasharray', ('3,2,3'));
 
     // Draw the subject
@@ -198,6 +198,8 @@ d3.json('./_js/sl_allResults_kde.json', function(error, data){
 
     // now can call the plot
     drawAllPlots();
+    updateClassifierLabel();
+
 })
 
 
@@ -322,6 +324,25 @@ function updateSubjPlot(subj, subjData){
 
 }
 
+function updateClassifierLabel(){
+    if (selectedClassProb == 'Modality'){
+        d3.select("#classLabel").text('Pics vs Words')
+    } else if (selectedClassProb == 'Category'){
+        d3.select("#classLabel").text('Dwellings vs Tools')
+    } else if (selectedClassProb == 'categoryWords'){
+        d3.select("#classLabel").text('Dwellings vs Tools (words only)')
+    } else if (selectedClassProb == 'categoryPics'){
+        d3.select("#classLabel").text('Dwellings vs Tools (pics only)')
+    } else if (selectedClassProb == 'Stimuli'){
+        d3.select("#classLabel").text('Unique stimulus')
+    } else if (selectedClassProb == 'stimuliWords'){
+        d3.select("#classLabel").text('Unique stimulus (words only)')
+    } else if (selectedClassProb == 'stimuliPics'){
+        d3.select("#classLabel").text('Unique stimulus (pics only)')
+    }
+}
+
+
 // handle on-click event of classProb selector
 d3.select("#classProbSelector")
     .on('change', function(){
@@ -329,5 +350,6 @@ d3.select("#classProbSelector")
 
         // rebind all of the data
         updateAllPlots();
+        updateClassifierLabel();
 
     })
