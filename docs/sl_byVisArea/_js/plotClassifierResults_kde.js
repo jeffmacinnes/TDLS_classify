@@ -192,7 +192,7 @@ function drawAllPlots(){
 }
 
 // load data
-d3.json('/TDLS_classify/_js/sl_allResults_kde.json', function(error, data){
+d3.json('sl_allResults_kde.json', function(error, data){
     if (error) throw error;
 
     // load the data into the global var
