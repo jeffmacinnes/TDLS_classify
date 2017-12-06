@@ -9,7 +9,7 @@ import os
 from os.path import join
 
 maskDir = '../../data/MNI_masks'
-thresh = 50       # probability to threshold probabilistic atlas at
+thresh = 80       # probability to threshold probabilistic atlas at
 
 
 for ROI in ['V1', 'V2', 'V3', 'V4']:
