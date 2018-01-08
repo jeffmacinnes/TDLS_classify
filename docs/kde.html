@@ -32,7 +32,6 @@
             margin-left: 20px;
             border-radius: 3px;
             overflow: hidden;
-            background: #fafafa url("img/icon-select.png") no-repeat 90% 50%;
         }
 
         .select-style select {
@@ -40,7 +39,7 @@
             width: 130%;
             border: none;
             box-shadow: none;
-            background: transparent;
+            background: white;
             background-image: none;
             -webkit-appearance: none;
             font-size: 20;
@@ -76,7 +75,7 @@
 </head>
 
 <body>
-    <h1>Classifier Results</h1>
+    <h1>Classifier Results By Visual Area</h1>
 
     <svg width="400" height="50">
         <g>
@@ -99,6 +98,7 @@
 
     <div id="plottingArea">
         <div class="select-style">
+            Select Classification:
             <select id="classProbSelector">
             <option value="Modality" selected="selected">Modality</option>
             <option value="Category">Category</option>
@@ -117,7 +117,7 @@
 
 
     <!-- Plotting Scripts -->
-    <script src="./_js/plotClassifierResults_kde.js"></script>
+    <script src="plotClassifierResults_kde.js"></script>
 </body>
 
 </html>
