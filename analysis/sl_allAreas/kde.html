@@ -1,0 +1,137 @@
+<html>
+
+<head>
+    <!-- load external scripts
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <style>
+        body {
+            background-color: #BFBDBC;
+        }
+
+        rect {
+            fill: steelblue;
+        }
+
+        svg {
+            margin-left: 20px;
+            padding: 20px;
+        }
+
+        #classLabel {
+            font-size: 20px;
+            margin-left:20px;
+            margin-top:10px;
+            font-weight:bold;
+        }
+
+        .select-style {
+            border: 1px solid #ccc;
+            width: 220px;
+            margin-left: 20px;
+            border-radius: 3px;
+            overflow: hidden;
+            background: #fafafa url("img/icon-select.png") no-repeat 90% 50%;
+        }
+
+        .select-style select {
+            padding: 5px 8px;
+            width: 130%;
+            border: none;
+            box-shadow: none;
+            background: transparent;
+            background-image: none;
+            -webkit-appearance: none;
+            font-size: 20;
+
+        }
+
+        .subjText {
+            font-size: 20;
+            font-weight: bold;
+            font-family: sans-serif;
+            color: #FFF;
+        }
+
+        .V1 {
+            stroke: #3F362A;
+        }
+
+        .V2 {
+            stroke: #E7450D;
+        }
+
+        .V3 {
+            stroke: #FA9D04;
+        }
+
+        .V4 {
+            stroke: #FBDE03;
+        }
+
+	.PMC {
+	    stroke: #33B2FF;
+        }
+
+	.PPA {
+	    stroke: #8D2EBA;
+	}	
+    </style>
+
+</head>
+
+<body>
+    <h1>Classifier Results</h1>
+
+    <svg width="800" height="50">
+        <g>
+            <rect x=0 y=0 width="50" height="50" style="fill:#3F362A" />
+            <text x=12 y=35 font-family="Verdana" font-size="20" fill="white">V1</text>
+        </g>
+        <g>
+            <rect x=60 y=0 width="50" height="50" style="fill:#E7450D" />
+            <text x=72 y=35 font-family="Verdana" font-size="20" fill="white">V2</text>
+        </g>
+        <g>
+            <rect x=120 y=0 width="50" height="50" style="fill:#FA9D04;" />
+            <text x=132 y=35 font-family="Verdana" font-size="20" fill="white">V3</text>
+        </g>
+        <g>
+            <rect x=180 y=0 width="50" height="50" style="fill:#FBDE03" />
+            <text x=192 y=35 font-family="Verdana" font-size="20" fill="white">V4</text>
+        </g>
+	<g>
+            <rect x=240 y=0 width="70" height="50" style="fill:#33B2FF" />
+            <text x=252 y=35 font-family="Verdana" font-size="20" fill="white">PMC</text>
+        </g>
+	<g>
+            <rect x=320 y=0 width="70" height="50" style="fill:#8D2EBA" />
+            <text x=332 y=35 font-family="Verdana" font-size="20" fill="white">PPA</text>
+        </g>
+    </svg>
+
+    <div id="plottingArea">
+        <div class="select-style">
+            <select id="classProbSelector">
+            <option value="Modality" selected="selected">Modality</option>
+            <option value="Category">Category</option>
+            <option value="categoryWords">Category (words)</option>
+            <option value="categoryPics">Category (pics)</option>
+            <option value="Stimulus">Stimulus</option>
+            <option value="stimulusWords">stimulusWords</option>
+            <option value="stimulusPics">stimulusPics</option>
+            </select>
+        </div>
+        <div id="classLabel">
+        </div>
+
+        <div id="subjPlots"></div>
+    </div>
+
+
+    <!-- Plotting Scripts -->
+    <script src="./_js/plotClassifierResults_kde.js"></script>
+</body>
+
+</html>
