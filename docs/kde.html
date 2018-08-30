@@ -7,7 +7,9 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <style>
         body {
-            background-color: #ACACAC;
+            background-color: #FFF;
+            font-family: sans-serif;
+            color: rgba(0, 0, 0, .8);
         }
 
         rect {
@@ -15,19 +17,66 @@
         }
 
         svg {
-            margin-left: 20px;
-            padding: 20px;
+            margin-left: 10px;
+            padding: 10px;
+        }
+
+
+        #plotArea {
+            width: 1300px;
+            margin: 50px;
+            padding: 25px;
+            outline: 10px solid #ACACAC;
+            border: 1px solid #000;
+            border-radius: 0px;
+            background-color: #ACACAC;
+        }
+
+        #legend {
+            position: absolute;
+            right: 300px;
+            top: 100px;
+        }
+
+        #brainLegend {
+            width: 170px;
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+        }
+
+        #classLabelHeader {
+            font-size: 16;
+            font-style: italic;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            padding-bottom: 10px;
+            margin: auto;
+            align-content: center;
+            text-align: center;
         }
 
         #classLabel {
-            font-size: 20px;
-            margin-left:20px;
-            margin-top:10px;
-            font-weight:bold;
+            font-size: 24px;
+            /* margin-left:20px; */
+            margin-top: 10px;
+            font-weight: bold;
+            margin: auto;
+            align-content: center;
+            text-align: center;
         }
 
+        .axisText {
+            font-size: 12;
+            font-family: sans-serif;
+        }
+
+
+
         .select-style {
-            border: 1px solid #ccc;
+            border: 1px solid #000;
+            background-color: rgba(0, 0, 0, .7);
+            color: #FFF;
+            padding-top: 6px;
             width: 220px;
             margin-left: 20px;
             border-radius: 3px;
@@ -42,16 +91,14 @@
             background: white;
             background-image: none;
             -webkit-appearance: none;
-            font-size: 20;
+            font-size: 18;
 
         }
 
-
         .subjText {
-            font-size: 20;
-            font-weight: bold;
+            font-size: 18;
             font-family: sans-serif;
-            color: #FFF;
+            color: #FF0000;
         }
 
         .V1 {
@@ -75,45 +122,64 @@
 </head>
 
 <body>
-    <h1>Classifier Results By Visual Area</h1>
+    <div id="plotArea">
 
-    <svg width="400" height="50">
-        <g>
-            <rect x=0 y=0 width="50" height="50" style="fill:#3F362A" />
-            <text x=12 y=35 font-family="Verdana" font-size="20" fill="white">V1</text>
-        </g>
-        <g>
-            <rect x=60 y=0 width="50" height="50" style="fill:#E7450D" />
-            <text x=72 y=35 font-family="Verdana" font-size="20" fill="white">V2</text>
-        </g>
-        <g>
-            <rect x=120 y=0 width="50" height="50" style="fill:#FA9D04;" />
-            <text x=132 y=35 font-family="Verdana" font-size="20" fill="white">V3</text>
-        </g>
-        <g>
-            <rect x=180 y=0 width="50" height="50" style="fill:#FBDE03" />
-            <text x=192 y=35 font-family="Verdana" font-size="20" fill="white">V4</text>
-        </g>
-    </svg>
+        <h1>Classifier Results By Visual Area</h1>
 
-    <div id="plottingArea">
-        <div class="select-style">
-            Select Classification:
-            <select id="classProbSelector">
-            <option value="Modality" selected="selected">Modality</option>
-            <option value="Category">Category</option>
-            <option value="categoryWords">Category (words)</option>
-            <option value="categoryPics">Category (pics)</option>
-            <option value="Stimulus">Stimulus</option>
-            <option value="stimulusWords">stimulusWords</option>
-            <option value="stimulusPics">stimulusPics</option>
-            </select>
+        <!-- Classification Category input -->
+        <div id="selectorInput">
+            <div class="select-style">
+                Select Classification:
+                <select id="classProbSelector">
+                <option value="Modality" selected="selected">Modality</option>
+                <option value="Category">Category</option>
+                <option value="categoryWords">Category (words)</option>
+                <option value="categoryPics">Category (pics)</option>
+                <option value="Stimulus">Stimulus</option>
+                <option value="stimulusWords">stimulusWords</option>
+                <option value="stimulusPics">stimulusPics</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div id="legend">
+            <svg width="250" height="80">
+                <g>
+                    <text x=0 y=20 font-family="Verdana" font-size="20" fill="white">Visual Area:</text>
+                </g>
+                <g>
+                    <rect x=0 y=30 width="50" height="50" style="fill:#3F362A" />
+                    <text x=12 y=65 font-family="Verdana" font-size="20" fill="white">V1</text>
+                </g>
+                <g>
+                    <rect x=60 y=30 width="50" height="50" style="fill:#E7450D" />
+                    <text x=72 y=65 font-family="Verdana" font-size="20" fill="white">V2</text>
+                </g>
+                <g>
+                    <rect x=120 y=30 width="50" height="50" style="fill:#FA9D04;" />
+                    <text x=132 y=65 font-family="Verdana" font-size="20" fill="white">V3</text>
+                </g>
+                <g>
+                    <rect x=180 y=30 width="50" height="50" style="fill:#FBDE03" />
+                    <text x=192 y=65 font-family="Verdana" font-size="20" fill="white">V4</text>
+                </g>
+            </svg>
+            <img id="brainLegend" src="brainLegend.png" />
+        </div>
+
+        <div></div>
+
+        <div id="classLabelHeader"> current classification:
         </div>
         <div id="classLabel">
         </div>
 
         <div id="subjPlots"></div>
+
+
     </div>
+
 
 
     <!-- Plotting Scripts -->

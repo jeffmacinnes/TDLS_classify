@@ -4,7 +4,7 @@ var slData
 var selectedClassProb = 'Modality';
 
 // set dimensions and margins for graph
-var margin = {top: 10, right: 30, bottom: 30, left: 30};
+var margin = {top: 10, right: 80, bottom: 30, left: 10};
 var width = 460 - margin.left - margin.right;
 var height = 250 - margin.top - margin.bottom;
 

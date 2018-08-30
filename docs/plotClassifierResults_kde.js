@@ -6,9 +6,10 @@ var slData
 var selectedClassProb = 'Modality';
 
 // set dimensions and margins for graph
-var margin = {top: 10, right: 30, bottom: 30, left: 40};
-var width = 460 - margin.left - margin.right;
-var height = 250 - margin.top - margin.bottom;
+var margin = {top: 5, right: 5, bottom: 25, left: 5};
+var width = 400 - margin.left - margin.right;
+var height = 240 - margin.top - margin.bottom;
+var padding = 15;
 
 // function to draw a single plot
 function drawSubjPlot(subj, subjData){
@@ -17,7 +18,7 @@ function drawSubjPlot(subj, subjData){
     // set the x/y scales
     var xScale = d3.scaleLinear()
         .domain([0,100])
-        .range([0, width]);
+        .range([padding, width-padding]);
     var yScale = d3.scaleLinear()
         .domain([0, .1])
         .range([height, 0]);
@@ -27,9 +28,17 @@ function drawSubjPlot(subj, subjData){
                 .ticks(2)
 
     var svg = d3.select("#subjPlots").append("svg")
+        .attr("class", "plotBox")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .attr("id", 'subj' + subj)
+
+    svg.append('text')
+        .attr("class", "axisText")
+        .attr("x", "200")
+        .attr("y", "239")
+        .style('text-anchor', 'middle')
+        .text("accuracy (%)");
 
     //**** V1
     var v1_data = subjData['V1']
@@ -150,9 +159,9 @@ function drawSubjPlot(subj, subjData){
     // Draw the subject
     svg.append('text')
         .attr('class','subjText')
-        .attr('x', xScale(85))
+        .attr('x', xScale(75))
         .attr('y', yScale(.06))
-        .html(subj);
+        .html("subj: " + subj);
 
 
     // draw the axis
@@ -217,7 +226,7 @@ function updateAllPlots(){
 function updateSubjPlot(subj, subjData){
     var xScale = d3.scaleLinear()
         .domain([0,100])
-        .range([0, width]);
+        .range([padding, width-padding]);
     var yScale = d3.scaleLinear()
         .domain([0, .1])
         .range([height, 0]);
